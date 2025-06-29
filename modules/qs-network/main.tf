@@ -1,18 +1,3 @@
-module "label" {
-  source = "cloudposse/label/null"
-  # Cloud Posse recommends pinning every module to a specific version
-  # version = "x.x.x"
-  namespace  = "eg"
-  stage      = "prod"
-  name       = "bastion"
-  attributes = ["public"]
-  delimiter  = "-"
-
-  tags = {
-    "BusinessUnit" = "XYZ",
-    "Snapshot"     = "true"
-  }
-}
 
 # Defining the VPC using Cloud Posse's terraform-aws-vpc module
 module "vpc" {
@@ -33,7 +18,7 @@ module "vpc" {
   tags = {
     Name = "${var.stack_name}-vpc"
   }
-  context = module.label.context
+  context = var.context
 }
 
 # Defining subnets using Cloud Posse's terraform-aws-dynamic-subnets module
@@ -47,8 +32,8 @@ module "dynamic_subnets" {
   enabled              = true
   ipv4_enabled         = true
   ipv6_enabled         = false
-  ipv4_cidr_block         = [module.vpc.vpc_cidr_block]
-  ipv6_cidr_block         = [module.vpc.vpc_ipv6_cidr_block]
+  ipv4_cidr_block      = [module.vpc.vpc_cidr_block]
+  ipv6_cidr_block      = [module.vpc.vpc_ipv6_cidr_block]
   nat_gateway_enabled  = false
   nat_instance_enabled = false
   route_create_timeout = "5m"
@@ -63,7 +48,7 @@ module "dynamic_subnets" {
   tags = {
     Name = "${var.stack_name}-subnets"
   }
-  context = module.label.context
+  context = var.context
 }
 
 # S3 Gateway Endpoint
@@ -96,7 +81,7 @@ module "no_access_sg" {
   tags = {
     Name = "${var.stack_name}-Default-NO-Access-SG"
   }
-  context = module.label.context
+  context = var.context
 }
 
 module "http_access_sg" {
@@ -123,7 +108,7 @@ module "http_access_sg" {
   tags = {
     Name = "${var.stack_name}-Default-HTTP-Access-SG"
   }
-  context = module.label.context
+  context = var.context
 }
 
 module "https_access_sg" {
@@ -150,7 +135,7 @@ module "https_access_sg" {
   tags = {
     Name = "${var.stack_name}-Default-HTTPS-Access-SG"
   }
-  context = module.label.context
+  context = var.context
 }
 
 module "rds_postgres_access_sg" {
@@ -177,7 +162,7 @@ module "rds_postgres_access_sg" {
   tags = {
     Name = "${var.stack_name}-Default-RDS-POSTGRESS-Access-SG"
   }
-  context = module.label.context
+  context = var.context
 }
 
 module "rds_mysql_access_sg" {
@@ -204,7 +189,7 @@ module "rds_mysql_access_sg" {
   tags = {
     Name = "${var.stack_name}-Default-RDS-MYSQL-Access-SG"
   }
-  context = module.label.context
+  context = var.context
 }
 
 # Data source for AWS region

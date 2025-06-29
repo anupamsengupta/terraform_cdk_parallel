@@ -29,3 +29,8 @@ variable "subnets_per_az_names" {
   type        = list(string)
   default     = ["public", "private"]
 }
+
+variable "context" {
+  description = "Context from the root label module"
+  type        = any
+}

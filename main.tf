@@ -5,13 +5,30 @@ provider "aws" {
   }
 }
 
+module "label" {
+  source = "cloudposse/label/null"
+  # Cloud Posse recommends pinning every module to a specific version
+  # version = "x.x.x"
+  namespace  = "quickysoft"
+  stage      = "dev"
+  name       = "erpconnect"
+  attributes = ["public"]
+  delimiter  = "-"
+
+  tags = {
+    "BusinessUnit" = "internal-1",
+    "Snapshot"     = "true"
+  }
+}
+
 module "qs_network" {
   source = "./modules/qs-network"
 
   stack_name = var.stack_name
   vpc_cidr   = var.vpc_cidr
-  vpc_cidrs = var.vpc_cidrs
+  vpc_cidrs  = var.vpc_cidrs
   azs        = var.azs
+  context    = module.label.context
 }
 
 /*
