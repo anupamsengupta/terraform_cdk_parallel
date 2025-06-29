@@ -31,6 +31,18 @@ module "qs_network" {
   context    = module.label.context
 }
 
+module "resources" {
+  source     = "./resources"
+  stack_name = var.stack_name
+  event_notification_enabled = var.event_notification_enabled
+  eventbridge_enabled = var.eventbridge_enabled
+  test_queue_name = var.test_queue_name
+  notification_queue_name = var.notification_queue_name
+  versioned = var.versioned
+  visibility_timeout_seconds = var.visibility_timeout_seconds
+
+}
+
 /*
 module "qs_ecs_cluster" {
   source = "./modules/qs-ecs-cluster"
@@ -39,17 +51,6 @@ module "qs_ecs_cluster" {
   service_cluster_name   = "${var.stack_name}-svcCluster"
   vpc_id                 = module.qs_network.vpc_id
   service_discovery_namespace = var.service_discovery_namespace
-
-  tags = {
-    Environment   = "RnD"
-    billing-code  = "ICRQ-1843"
-  }
-}
-
-module "resources" {
-  source = "./resources"
-
-  stack_name = var.stack_name
 
   tags = {
     Environment   = "RnD"
