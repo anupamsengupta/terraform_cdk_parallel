@@ -1,3 +1,9 @@
+
+variable "context" {
+  description = "Context from the root label module"
+  type        = any
+}
+
 variable "stack_name" {
   description = "Name of the stack"
   type        = string
@@ -30,7 +36,3 @@ variable "subnets_per_az_names" {
   default     = ["public", "private"]
 }
 
-variable "context" {
-  description = "Context from the root label module"
-  type        = any
-}

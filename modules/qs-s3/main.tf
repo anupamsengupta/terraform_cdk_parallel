@@ -14,6 +14,7 @@ module "s3_bucket" {
 
   name = "${var.stack_name}-${var.bucket_name}"
 
+  context = var.context
   tags = {
     Name = "${var.stack_name}-${var.bucket_name}"
   }

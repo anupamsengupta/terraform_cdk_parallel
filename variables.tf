@@ -25,10 +25,29 @@ variable "azs" {
   default     = ["us-east-1a", "us-east-1b"]
 }
 
-variable "ecr_repository_url" {
+variable "backend_ecr_repository_url" {
   description = "URL of the ECR repository"
   type        = string
-  default     = "123456789012.dkr.ecr.us-east-1.amazonaws.com/example-repo"
+}
+
+variable "backend_context_path" {
+  description = "spring boot context path for backend"
+  type        = string
+}
+
+variable "frontend_ecr_repository_url" {
+  description = "URL of the ECR repository"
+  type        = string
+}
+
+variable "frontend1_context_path" {
+  description = "spring boot context path for backend"
+  type        = string
+}
+
+variable "frontend2_context_path" {
+  description = "spring boot context path for backend"
+  type        = string
 }
 
 variable "environment_vars" {
@@ -100,6 +119,11 @@ variable "object_transition_standardia_days" {
 variable "object_transition_onezoneia_days" {
   description = "Retention period for the object in s3 bucket in days to one-zone IA"
   type        = number
+}
+
+variable "service_discovery_namespace" {
+  description = "Service discovery namespace for ECS"
+  type        = string
 }
 
 variable "default_tags" {

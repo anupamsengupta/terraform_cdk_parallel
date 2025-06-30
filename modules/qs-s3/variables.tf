@@ -1,3 +1,8 @@
+variable "context" {
+  description = "Context from the root label module"
+  type        = any
+}
+
 variable "region" {
   description = "AWS region"
   type        = string

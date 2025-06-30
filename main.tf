@@ -34,6 +34,7 @@ module "qs_network" {
 module "resources" {
   source = "./resources"
 
+  context                            = module.label.context
   region                             = var.region
   stack_name                         = var.stack_name
   event_notification_enabled         = var.event_notification_enabled
@@ -51,41 +52,35 @@ module "resources" {
   object_transition_onezoneia_days   = var.object_transition_onezoneia_days
 }
 
-/*
 module "qs_ecs_cluster" {
   source = "./modules/qs-ecs-cluster"
 
-  stack_name             = var.stack_name
-  service_cluster_name   = "${var.stack_name}-svcCluster"
-  vpc_id                 = module.qs_network.vpc_id
+  context                     = module.label.context
+  stack_name                  = var.stack_name
+  service_cluster_name        = "${var.stack_name}-svcCluster"
+  vpc_id                      = module.qs_network.vpc_id
   service_discovery_namespace = var.service_discovery_namespace
-
-  tags = {
-    Environment   = "RnD"
-    billing-code  = "ICRQ-1843"
-  }
 }
 
 module "backend" {
   source = "./backend"
 
-  stack_name                  = var.stack_name
-  context_path                = var.backend_context_path
-  cluster_arn                 = module.qs_ecs_cluster.cluster_arn
-  ecr_repository_url          = var.ecr_repository_url
-  http_security_group_id      = module.qs_network.http_access_sg_id
-  service_discovery_namespace_id = module.qs_ecs_cluster.service_discovery_namespace_id
-  service_discovery_namespace_name = module.qs_ecs_cluster.service_discovery_namespace_name
-  vpc_id                      = module.qs_network.vpc_id
-  private_subnet_ids          = module.qs_network.private_subnets
-  target_group_arn            = module.api.backend_target_group_arn
-
-  tags = {
-    Environment   = "RnD"
-    billing-code  = "ICRQ-1843"
-  }
+  context                          = module.label.context
+  stack_name                       = var.stack_name
+  context_path                     = var.backend_context_path
+  cluster_arn                      = module.qs_ecs_cluster.cluster_arn
+  ecr_repository_url               = var.backend_ecr_repository_url
+  http_security_group_id           = module.qs_network.http_access_sg_id
+  service_discovery_namespace_id   = var.service_discovery_namespace
+  service_discovery_namespace_name = var.service_discovery_namespace
+  vpc_id                           = module.qs_network.vpc_id
+  private_subnet_ids               = module.qs_network.private_subnets
+  ecs_task_execution_role_arn      = module.qs_ecs_cluster.task_execution_role_arn
+  ecs_task_role_arn                = module.qs_ecs_cluster.task_role_arn
+  //target_group_arn                 = module.api.backend_target_group_arn
 }
 
+/*
 module "frontend1" {
   source = "./frontend"
 

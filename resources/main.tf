@@ -1,6 +1,7 @@
 module "test_queue" {
   source = "../modules/qs-sqs"
 
+  context                    = var.context
   stack_name                 = var.stack_name
   queue_name                 = "${var.stack_name}-com-quickysoft-anu-testqueue"
   visibility_timeout_seconds = var.visibility_timeout_seconds
@@ -10,6 +11,7 @@ module "test_queue" {
 module "test_topic" {
   source = "../modules/qs-sns"
 
+  context    = var.context
   stack_name = var.stack_name
   topic_name = "${var.stack_name}-com-quickysoft-anu-testtopic"
 }
@@ -18,6 +20,7 @@ module "test_topic" {
 module "s3_event_notification" {
   source = "../modules/qs-s3"
 
+  context                            = var.context
   region                             = var.region
   stack_name                         = var.stack_name
   bucket_name                        = "${var.stack_name}-com-quickysoft-anu-eventnotification-bucket"
@@ -39,6 +42,7 @@ module "s3_event_notification" {
 module "s3_eventbridge" {
   source = "../modules/qs-s3"
 
+  context                            = var.context
   region                             = var.region
   stack_name                         = var.stack_name
   bucket_name                        = "${var.stack_name}-com-quickysoft-anu-eventbridge-bucket"

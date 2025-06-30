@@ -8,6 +8,7 @@ module "sns_topic" {
   sqs_dlq_enabled             = var.retention_period > 0
   //sqs_dlq_maximum_message_retention_period = var.retention_period * 24 * 60 * 60
 
+  context = var.context
   tags = {
     Name = "${var.stack_name}-${var.topic_name}"
   }

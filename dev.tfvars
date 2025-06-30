@@ -22,9 +22,12 @@ object_transition_standardia_days  = 30
 object_transition_onezoneia_days   = 60
 
 #application
-ecr_repository_url     = "quickysoft/sample-spring-boot-app"
-environment_vars       = {}
-backend_context_path   = "backend"
-frontend1_context_path = "frontend1"
-frontend2_context_path = "frontend2"
+service_discovery_namespace = "erpconnect.local"
+service_cluster_name        = "svcCluster"
+backend_ecr_repository_url  = "870912676422.dkr.ecr.us-east-1.amazonaws.com/quickysoft/sample-spring-boot-app"
+backend_context_path        = "backend"
+frontend1_context_path      = "frontend1"
+frontend2_context_path      = "frontend2"
+frontend_ecr_repository_url = "870912676422.dkr.ecr.us-east-1.amazonaws.com/quickysoft/sample-spring-boot-app"
+environment_vars            = {}
 
