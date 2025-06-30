@@ -41,6 +41,8 @@ module "resources" {
   versioned                  = var.versioned
   visibility_timeout_seconds = var.visibility_timeout_seconds
   enable_dlq                 = var.enable_dlq
+  filter_prefix              = var.filter_prefix
+  filter_suffix              = var.filter_suffix
 }
 
 /*

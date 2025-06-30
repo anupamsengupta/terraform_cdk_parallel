@@ -14,7 +14,6 @@ module "test_topic" {
   topic_name = "${var.stack_name}-com-quickysoft-anu-testtopic"
 }
 
-/*
 module "s3_event_notification" {
   source = "../modules/qs-s3"
 
@@ -24,8 +23,9 @@ module "s3_event_notification" {
   eventbridge_enabled        = false
   notification_queue_name    = var.notification_queue_name
   versioned                  = var.versioned
+  filter_prefix              = var.filter_prefix
+  filter_suffix              = var.filter_suffix
 }
-*/
 /*
 module "s3_eventbridge" {
   source = "../modules/qs-s3"

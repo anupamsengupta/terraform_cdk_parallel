@@ -73,6 +73,16 @@ variable "enable_dlq" {
   type        = bool
 }
 
+variable "filter_prefix" {
+  description = "Prefix for S3 event notifications"
+  type        = string
+}
+
+variable "filter_suffix" {
+  description = "Suffix for S3 event notifications"
+  type        = string
+}
+
 variable "default_tags" {
   description = "A map of tags to assign to resources"
   type        = map(string)

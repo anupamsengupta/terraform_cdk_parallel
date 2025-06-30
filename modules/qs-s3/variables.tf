@@ -62,3 +62,13 @@ variable "sse_algorithm" {
   type        = string
   default     = "AES256"
 }
+
+variable "filter_prefix" {
+  description = "Prefix for S3 event notifications"
+  type        = string
+}
+
+variable "filter_suffix" {
+  description = "Suffix for S3 event notifications"
+  type        = string
+}

@@ -15,3 +15,5 @@ notification_queue_name    = "qs-example-notification-queue"
 versioned                  = true
 enable_dlq                 = true
 visibility_timeout_seconds = 900 # 15 minutes
+filter_prefix              = "upload/"
+filter_suffix              = ".csv"

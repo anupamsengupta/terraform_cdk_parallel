@@ -37,3 +37,13 @@ variable "enable_dlq" {
   description = "Enable dead letter queue"
   type        = bool
 }
+
+variable "filter_prefix" {
+  description = "Prefix for S3 event notifications"
+  type        = string
+}
+
+variable "filter_suffix" {
+  description = "Suffix for S3 event notifications"
+  type        = string
+}
