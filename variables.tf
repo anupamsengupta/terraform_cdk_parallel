@@ -63,7 +63,7 @@ variable "versioned" {
   type        = bool
 }
 
-variable visibility_timeout_seconds {
+variable "visibility_timeout_seconds" {
   description = "Visibility timeout in seconds"
   type        = number
 }
@@ -71,7 +71,6 @@ variable visibility_timeout_seconds {
 variable "enable_dlq" {
   description = "Enable dead letter queue"
   type        = bool
-  default     = true
 }
 
 variable "default_tags" {

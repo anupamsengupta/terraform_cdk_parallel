@@ -32,15 +32,15 @@ module "qs_network" {
 }
 
 module "resources" {
-  source     = "./resources"
-  stack_name = var.stack_name
+  source                     = "./resources"
+  stack_name                 = var.stack_name
   event_notification_enabled = var.event_notification_enabled
-  eventbridge_enabled = var.eventbridge_enabled
-  test_queue_name = var.test_queue_name
-  notification_queue_name = var.notification_queue_name
-  versioned = var.versioned
+  eventbridge_enabled        = var.eventbridge_enabled
+  test_queue_name            = var.test_queue_name
+  notification_queue_name    = var.notification_queue_name
+  versioned                  = var.versioned
   visibility_timeout_seconds = var.visibility_timeout_seconds
-
+  enable_dlq                 = var.enable_dlq
 }
 
 /*

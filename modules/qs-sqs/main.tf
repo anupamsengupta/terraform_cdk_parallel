@@ -1,7 +1,7 @@
 resource "aws_sqs_queue" "notification_queue" {
 
   name                       = var.queue_name
-  depends_on = [ aws_sqs_queue.dlq ]
+  depends_on                 = [aws_sqs_queue.dlq]
   delay_seconds              = var.delivery_delay_seconds
   max_message_size           = var.max_message_size_bytes
   message_retention_seconds  = var.retention_period_days * 24 * 60 * 60

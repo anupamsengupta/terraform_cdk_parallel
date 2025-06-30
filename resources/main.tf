@@ -1,28 +1,20 @@
-module "notification_queue" {
-  source = "../modules/qs-sqs"
-
-  stack_name             = var.stack_name
-  queue_name             = var.notification_queue_name
-  visibility_timeout_seconds = var.visibility_timeout_seconds
-  enable_dlq             = var.enable_dlq
-}
-
 module "test_queue" {
   source = "../modules/qs-sqs"
 
-  stack_name             = var.stack_name
-  queue_name             = "${var.stack_name}-com-quickysoft-anu-testqueue"
+  stack_name                 = var.stack_name
+  queue_name                 = "${var.stack_name}-com-quickysoft-anu-testqueue"
   visibility_timeout_seconds = var.visibility_timeout_seconds
-  enable_dlq             = var.enable_dlq
+  enable_dlq                 = var.enable_dlq
 }
 
-module "sns_topic" {
+module "test_topic" {
   source = "../modules/qs-sns"
 
   stack_name = var.stack_name
-  topic_name = "${var.stack_name}-com-quickysoft-anu-test"
+  topic_name = "${var.stack_name}-com-quickysoft-anu-testtopic"
 }
 
+/*
 module "s3_event_notification" {
   source = "../modules/qs-s3"
 
@@ -33,7 +25,8 @@ module "s3_event_notification" {
   notification_queue_name    = var.notification_queue_name
   versioned                  = var.versioned
 }
-
+*/
+/*
 module "s3_eventbridge" {
   source = "../modules/qs-s3"
 
@@ -44,3 +37,4 @@ module "s3_eventbridge" {
   notification_queue_name    = var.notification_queue_name
   versioned                  = var.versioned
 }
+*/

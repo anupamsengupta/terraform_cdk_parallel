@@ -2,15 +2,15 @@ module "s3_bucket" {
   source  = "cloudposse/s3-bucket/aws"
   version = "4.2.0"
 
-  bucket_name             = var.bucket_name
-  block_public_acls       = var.block_public_access
-  block_public_policy     = var.block_public_access
-  ignore_public_acls      = var.block_public_access
-  restrict_public_buckets = var.block_public_access
-  force_destroy           = var.removal_policy == "DESTROY" ? true : false
-  sse_algorithm           = var.sse_algorithm
-  versioning_enabled      = var.versioned
-  lifecycle_configuration_rules  = local.lifecycle_configuration_rules
+  bucket_name                   = var.bucket_name
+  block_public_acls             = var.block_public_access
+  block_public_policy           = var.block_public_access
+  ignore_public_acls            = var.block_public_access
+  restrict_public_buckets       = var.block_public_access
+  force_destroy                 = var.removal_policy == "DESTROY" ? true : false
+  sse_algorithm                 = var.sse_algorithm
+  versioning_enabled            = var.versioned
+  lifecycle_configuration_rules = local.lifecycle_configuration_rules
 
   name = "${var.stack_name}-${var.bucket_name}"
 

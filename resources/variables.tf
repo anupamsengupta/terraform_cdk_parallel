@@ -36,5 +36,4 @@ variable "visibility_timeout_seconds" {
 variable "enable_dlq" {
   description = "Enable dead letter queue"
   type        = bool
-  default     = true
 }
