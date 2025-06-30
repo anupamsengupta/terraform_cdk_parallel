@@ -1,3 +1,8 @@
+variable "region" {
+  description = "AWS region"
+  type        = string
+}
+
 variable "stack_name" {
   description = "Name of the stack"
   type        = string
@@ -46,4 +51,24 @@ variable "filter_prefix" {
 variable "filter_suffix" {
   description = "Suffix for S3 event notifications"
   type        = string
+}
+
+variable "object_expiration_days" {
+  description = "Retention period for the object in s3 bucket in days"
+  type        = number
+}
+
+variable "noncurrent_version_expiration_days" {
+  description = "Retention period for the non current object in s3 bucket in days"
+  type        = number
+}
+
+variable "object_transition_standardia_days" {
+  description = "Transition period for the object in s3 bucket in days to standard IA"
+  type        = number
+}
+
+variable "object_transition_onezoneia_days" {
+  description = "Retention period for the object in s3 bucket in days to one-zone IA"
+  type        = number
 }

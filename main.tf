@@ -32,17 +32,23 @@ module "qs_network" {
 }
 
 module "resources" {
-  source                     = "./resources"
-  stack_name                 = var.stack_name
-  event_notification_enabled = var.event_notification_enabled
-  eventbridge_enabled        = var.eventbridge_enabled
-  test_queue_name            = var.test_queue_name
-  notification_queue_name    = var.notification_queue_name
-  versioned                  = var.versioned
-  visibility_timeout_seconds = var.visibility_timeout_seconds
-  enable_dlq                 = var.enable_dlq
-  filter_prefix              = var.filter_prefix
-  filter_suffix              = var.filter_suffix
+  source = "./resources"
+
+  region                             = var.region
+  stack_name                         = var.stack_name
+  event_notification_enabled         = var.event_notification_enabled
+  eventbridge_enabled                = var.eventbridge_enabled
+  test_queue_name                    = var.test_queue_name
+  notification_queue_name            = var.notification_queue_name
+  versioned                          = var.versioned
+  visibility_timeout_seconds         = var.visibility_timeout_seconds
+  enable_dlq                         = var.enable_dlq
+  filter_prefix                      = var.filter_prefix
+  filter_suffix                      = var.filter_suffix
+  object_expiration_days             = var.object_expiration_days
+  noncurrent_version_expiration_days = var.noncurrent_version_expiration_days
+  object_transition_standardia_days  = var.object_transition_standardia_days
+  object_transition_onezoneia_days   = var.object_transition_onezoneia_days
 }
 
 /*
