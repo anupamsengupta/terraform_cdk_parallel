@@ -24,11 +24,12 @@ module "label" {
 module "qs_network" {
   source = "./modules/qs-network"
 
-  stack_name = var.stack_name
-  vpc_cidr   = var.vpc_cidr
-  vpc_cidrs  = var.vpc_cidrs
-  azs        = var.azs
-  context    = module.label.context
+  stack_name                  = var.stack_name
+  vpc_cidr                    = var.vpc_cidr
+  vpc_cidrs                   = var.vpc_cidrs
+  azs                         = var.azs
+  context                     = module.label.context
+  service_discovery_namespace = var.service_discovery_namespace
 }
 
 module "resources" {
@@ -71,12 +72,14 @@ module "backend" {
   cluster_arn                      = module.qs_ecs_cluster.cluster_arn
   ecr_repository_url               = var.backend_ecr_repository_url
   http_security_group_id           = module.qs_network.http_access_sg_id
-  service_discovery_namespace_id   = var.service_discovery_namespace
-  service_discovery_namespace_name = var.service_discovery_namespace
   vpc_id                           = module.qs_network.vpc_id
   private_subnet_ids               = module.qs_network.private_subnets
   ecs_task_execution_role_arn      = module.qs_ecs_cluster.task_execution_role_arn
   ecs_task_role_arn                = module.qs_ecs_cluster.task_role_arn
+  alb_security_group_id            = module.qs_network.http_access_sg_id
+  subnet_ids                       = module.qs_network.private_subnets
+  service_discovery_namespace_name = module.qs_network.service_discovery_namespace_name
+  service_discovery_namespace_id   = module.qs_network.service_discovery_namespace_id
   //target_group_arn                 = module.api.backend_target_group_arn
 }
 

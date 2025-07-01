@@ -77,13 +77,11 @@ variable "use_service_connect_proxy" {
 variable "service_discovery_namespace_id" {
   description = "ID of the service discovery namespace"
   type        = string
-  default     = ""
 }
 
 variable "service_discovery_namespace_name" {
   description = "Name of the service discovery namespace"
   type        = string
-  default     = ""
 }
 
 variable "is_autoscaling_enabled" {
@@ -146,6 +144,11 @@ variable "ecs_task_execution_role_arn" {
 
 variable "ecs_task_role_arn" {
   description = "ARN of the ECS task role"
+  type        = string
+}
+
+variable "alb_security_group_id" {
+  description = "ID of the security group for the ALB service"
   type        = string
 }
 

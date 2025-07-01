@@ -33,6 +33,7 @@ module "ecs_task" {
   autoscaling_max_capacity         = 3
   vpc_id                           = var.vpc_id
   subnet_ids                       = var.private_subnet_ids
+  alb_security_group_id            = var.alb_security_group_id
   //target_group_arn                 = var.target_group_arn
 
 }

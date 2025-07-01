@@ -64,3 +64,13 @@ variable "ecs_task_role_arn" {
   description = "ARN of the ECS task role"
   type        = string
 }
+
+variable "alb_security_group_id" {
+  description = "ID of the security group for the ALB service"
+  type        = string
+}
+
+variable "subnet_ids" {
+  description = "List of subnet IDs for the ECS service"
+  type        = list(string)
+}

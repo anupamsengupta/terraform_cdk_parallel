@@ -36,3 +36,8 @@ variable "subnets_per_az_names" {
   default     = ["public", "private"]
 }
 
+variable "service_discovery_namespace" {
+  description = "Service discovery namespace for ECS"
+  type        = string
+}
+

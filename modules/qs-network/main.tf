@@ -51,6 +51,32 @@ module "dynamic_subnets" {
   context = var.context
 }
 
+resource "aws_service_discovery_private_dns_namespace" "erpconnect_dns_namespace" {
+  name        = var.service_discovery_namespace
+  description = "example"
+  vpc         = module.vpc.vpc_id
+}
+
+resource "aws_service_discovery_service" "erpconnect_discovery_service" {
+  name = var.service_discovery_namespace
+
+  dns_config {
+    namespace_id = aws_service_discovery_private_dns_namespace.erpconnect_dns_namespace.id
+
+    dns_records {
+      ttl  = 10
+      type = "A"
+    }
+
+    routing_policy = "MULTIVALUE"
+  }
+
+  /*
+  health_check_custom_config {
+    failure_threshold = 1
+  }*/
+}
+
 # S3 Gateway Endpoint
 resource "aws_vpc_endpoint" "s3" {
   vpc_id            = module.vpc.vpc_id
