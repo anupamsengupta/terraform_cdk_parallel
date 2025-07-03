@@ -43,7 +43,7 @@ resource "aws_ecs_cluster" "main_cluster" {
 }
 
 # ECS Cluster Capacity Providers (Fargate)
-resource "aws_ecs_cluster_capacity_providers" "main" {
+resource "aws_ecs_cluster_capacity_providers" "main_capacity_provider" {
   cluster_name       = aws_ecs_cluster.main_cluster.name
   capacity_providers = ["FARGATE"]
 }

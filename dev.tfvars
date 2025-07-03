@@ -30,4 +30,4 @@ frontend1_context_path      = "frontend1"
 frontend2_context_path      = "frontend2"
 frontend_ecr_repository_url = "870912676422.dkr.ecr.us-east-1.amazonaws.com/quickysoft/sample-spring-boot-app"
 environment_vars            = {}
-
+services_list               = ["backend", "frontend1", "frontend2"]

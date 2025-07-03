@@ -126,6 +126,11 @@ variable "service_discovery_namespace" {
   type        = string
 }
 
+variable "services_list" {
+  description = "List of services to be created"
+  type        = list(string)
+}
+
 variable "default_tags" {
   description = "A map of tags to assign to resources"
   type        = map(string)
